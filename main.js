@@ -12,9 +12,13 @@ Ex:  hello(null) => null
 
 */
 
-function hello() {
-  // WRITE YOUR CODE UNDER THIS LINE  
+function hello(n) {
 
+  if (n.length !== 0 && n != "null")
+    t = "HELLO " + n + " !"
+  if (n == "null" || n.length === 0)
+    t = "null"
+  return t
 }
 
 
@@ -32,9 +36,9 @@ Ex: calculateTax(100,0.15)
 => "You got 100 JD from sales, you should pay 15 JD for tax and you will have 85 JD as net sales."
 */
 
-function calculateTax() {
-  // WRITE YOUR CODE UNDER THIS LINE 
+function calculateTax(sal, tax) {
 
+  return "You got " + sal + " JD from sales, you should pay " + (sal * tax) + " JD for tax and you will have" + (sal - sal * tax) + " JD as net sales."
 }
 
 
@@ -52,29 +56,53 @@ Ex: repeatChar("a",2); => "a, A"
 Ex: repeatChar("C",5); => "C, c, C, c, C"
 */
 
-function repeatChar() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+function repeatChar(st, n) {
+  var x = 0
+  var t = ""
+  while (x !== n) {
+    x++;
+    if (x % 2 == 0) {
+      if (st.toUpperCase() == st)
+        t += ", " + st.toLowerCase()
+      else
+        t += ", " + st.toUpperCase()
 
+    }
+    else
+      t += ", " + st
+  }
+  t = t.slice(2);
+  return t
 }
 
 
 /* Q4:
-Using recursion 
+Using recursion
 Create a function called stringToCapital
-that takes a string 
+that takes a string
 and return the same string but convert it to upper case
 ** Important: you should solve this question using recursion
 ** Important: you should haven't any problem if there is a symbol
 
-Ex: stringToCapital("My Name Is: Alex !") 
+Ex: stringToCapital("My Name Is: Alex !")
 => "MY NAME IS: ALEX !"
-Ex: stringToCapital("Are you a student in coding ACADEMY by ORANGE ?") 
+Ex: stringToCapital("Are you a student in coding ACADEMY by ORANGE ?")
 => "ARE YOU A STUDENT IN CODING ACADEMY BY ORANGE ?"
 */
 
-function stringToCapital() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+// function stringToCapital1(st) {
+//   if (st.toUpperCase() == st) {
 
-}
+//     return st
+//   }
+//   return stringToCapital1(st.toUpperCase())
+// } 
+//other solution 
 
-// Good luck :)
+function stringToCapital(st) {
+  if (st.length == 0) {
+
+    return ""
+  }
+  return st.slice(0, 1).toUpperCase() + stringToCapital(st.slice(1))
+} 
